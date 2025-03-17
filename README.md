@@ -1,4 +1,4 @@
-## 5. GraphQL with Next.js & MongoDB (`graphql-nextjs-mongo`)
+## GraphQL with Next.js & MongoDB (`graphql-nextjs-mongo`)
 
 ### Features:
 
