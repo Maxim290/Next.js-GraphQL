@@ -1,5 +1,12 @@
 import { gql } from "@apollo/client";
+import { GetServerSideProps } from "next";
 import client from "../lib/apolloClient";
+
+interface User {
+    id: string;
+    name: string;
+    email: string;
+}
 
 const GET_USERS = gql`
     query GetUsers {
@@ -11,16 +18,20 @@ const GET_USERS = gql`
     }
 `;
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
     try {
-        const { data } = await client.query({ query: GET_USERS });
+        const { data } = await client().query({ query: GET_USERS });
         return { props: { users: data.users } };
     } catch (error) {
         return { props: { users: [] } };
     }
+};
+
+interface UsersPageProps {
+    users: User[];
 }
 
-export default function UsersPage({ users }) {
+export default function UsersPage({ users }: UsersPageProps) {
     return (
         <div>
             <h1>Users (SSR)</h1>

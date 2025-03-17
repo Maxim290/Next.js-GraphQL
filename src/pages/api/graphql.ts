@@ -8,10 +8,7 @@ import errorHandler from "../../utils/errorHandler";
 const MONGO_URI = process.env.MONGO_URI;
 
 if (!global.mongoose) {
-    global.mongoose = mongoose.connect(MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+    global.mongoose = mongoose.connect(MONGO_URI);
 }
 
 const apolloServer = new ApolloServer({
