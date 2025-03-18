@@ -8,6 +8,10 @@ interface User {
     email: string;
 }
 
+interface UsersPageProps {
+    users: User[];
+}
+
 const GET_USERS = gql`
     query GetUsers {
         users {
@@ -26,10 +30,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
         return { props: { users: [] } };
     }
 };
-
-interface UsersPageProps {
-    users: User[];
-}
 
 export default function UsersPage({ users }: UsersPageProps) {
     return (
